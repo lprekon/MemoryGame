@@ -1,6 +1,4 @@
-module.exports = {
-  singleQuote: true,
-  trailingComma: 'es5',
-  arrowParens: 'always',
-  quoteProps: 'consistent',
-};
+export const singleQuote = true;
+export const trailingComma = 'es5';
+export const arrowParens = 'always';
+export const quoteProps = 'consistent';
