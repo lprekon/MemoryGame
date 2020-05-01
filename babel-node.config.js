@@ -1,14 +1,14 @@
-export const presets = [
-  '@babel/react',
-  [
-    '@babel/env',
-    {
-      targets: {
-        node: 'current',
+module.exports = {
+  presets: [
+    '@babel/react',
+    [
+      '@babel/env',
+      {
+        targets: {
+          node: 'current',
+        },
       },
-    },
+    ],
   ],
-];
-export const plugins = [
-  ['@babel/plugin-proposal-class-properties', { loose: true }],
-];
+  plugins: [['@babel/plugin-proposal-class-properties', { loose: true }]],
+};
