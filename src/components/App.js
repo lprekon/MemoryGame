@@ -4,13 +4,13 @@ import { range } from '../utils';
 
 const colors = {
   unused: 'lightgray',
-  used: 'lightgreen',
-  wrong: 'lightcoral',
+  green: 'lightgreen',
+  red: 'lightcoral',
   candidate: 'deepskyblue',
 };
 
 const testColors = range(1, 16).map((number) =>
-  number % 2 == 0 ? colors.used : colors.unused
+  number % 2 == 0 ? colors.green : colors.red
 );
 
 export default function App({ initialData }) {
@@ -18,7 +18,11 @@ export default function App({ initialData }) {
   return (
     <div className="playArea">
       {range(1, 16).map((number) => (
-        <Space key={number} color={testColors[number - 1]} />
+        <Space
+          key={number}
+          color={colors.unused}
+          trueColor={testColors[number - 1]}
+        />
       ))}
     </div>
   );
