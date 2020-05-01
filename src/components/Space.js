@@ -1,8 +1,7 @@
-import React, {useState} from React
+import React, { useState } from 'react';
 
 const Space = (props) => {
+  return <button className="space"></button>;
+};
 
-    return <button className="space"></button>
-}
-
-export default Space
+export default Space;
