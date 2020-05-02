@@ -3,7 +3,7 @@ import Space from './Space';
 import { range } from '../utils';
 
 const testColors = range(0, 15).map((number) =>
-  number % 3 == 0 ? 'green' : 'red'
+  number % 3 == 0 ? 'green' : 'unused'
 );
 
 export default function App() {
@@ -13,7 +13,7 @@ export default function App() {
   useEffect(() => {
     const timeId = setTimeout(() => {
       setDisplayMode(false);
-    }, 2000);
+    }, 1500);
     return () => {
       clearTimeout(timeId);
     };
