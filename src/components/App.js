@@ -21,6 +21,9 @@ export default function App() {
 
   const onButtonClick = (buttonNum) => {
     console.log(buttonNum);
+    if (displayMode) {
+      return;
+    }
     const newRevealedButtons = revealedButtons.includes(buttonNum)
       ? revealedButtons.filter((bn) => {
           bn !== buttonNum;
