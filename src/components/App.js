@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Space from './Space';
 import { range } from '../utils';
 
@@ -7,7 +7,17 @@ const testColors = range(0, 15).map((number) =>
 );
 
 export default function App() {
-  const [revealedButtons, setRevealedButtons] = useState([1]);
+  const [revealedButtons, setRevealedButtons] = useState([]);
+  const [displayMode, setDisplayMode] = useState(true);
+
+  useEffect(() => {
+    const timeId = setTimeout(() => {
+      setDisplayMode(false);
+    }, 2000);
+    return () => {
+      clearTimeout(timeId);
+    };
+  });
 
   const onButtonClick = (buttonNum) => {
     console.log(buttonNum);
@@ -20,7 +30,7 @@ export default function App() {
   };
 
   const buttonStatus = (buttonNum) => {
-    return revealedButtons.includes(buttonNum)
+    return revealedButtons.includes(buttonNum) || displayMode
       ? testColors[buttonNum]
       : 'hidden';
   };
