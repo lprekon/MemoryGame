@@ -15,21 +15,19 @@ export const PlayArea = (props) => {
     };
   });
 
-  const onButtonClick = (buttonNum) => {
-    console.log(buttonNum);
+  const onButtonClick = (clickedButton) => {
     if (displayMode) {
       return;
     }
-    const newRevealedButtons = revealedButtons.includes(buttonNum)
-      ? revealedButtons.filter((bn) => {
-          bn !== buttonNum;
-        })
-      : revealedButtons.concat(buttonNum);
+    const newRevealedButtons = revealedButtons.includes(clickedButton)
+      ? revealedButtons.filter((element) => element !== clickedButton)
+      : revealedButtons.concat(clickedButton);
     setRevealedButtons(newRevealedButtons);
   };
 
   const buttonStatus = (buttonNum) => {
-    return revealedButtons.includes(buttonNum) || displayMode
+    return revealedButtons.includes(buttonNum) ||
+      (displayMode && props.colorList[buttonNum] == 'green')
       ? props.colorList[buttonNum]
       : 'hidden';
   };
