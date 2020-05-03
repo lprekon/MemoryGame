@@ -52,9 +52,14 @@ export const PlayArea = (props) => {
           />
         ))}
       </div>
-      <div className="messageArea">
-        <h1>{gameIsWon ? 'You win!' : ''}</h1>
-      </div>
+      {gameIsWon ? (
+        <div className="messageArea">
+          <h1>You win!</h1>
+          <button onClick={props.resetGame}>Play again</button>
+        </div>
+      ) : (
+        ''
+      )}
     </div>
   );
 };
