@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { range } from '../utils';
+import { range, arraysAreEqual } from '../utils';
 import Space from './Space';
+
+const testAnswers = [1, 3, 5, 7];
 
 export const PlayArea = (props) => {
   const [revealedButtons, setRevealedButtons] = useState([]);
   const [displayMode, setDisplayMode] = useState(true);
+  const [answers, setAnswers] = useState(testAnswers);
 
   useEffect(() => {
     const timeId = setTimeout(() => {
@@ -26,22 +29,32 @@ export const PlayArea = (props) => {
   };
 
   const buttonStatus = (buttonNum) => {
-    return revealedButtons.includes(buttonNum) ||
-      (displayMode && props.colorList[buttonNum] == 'green')
-      ? props.colorList[buttonNum]
+    return displayMode && answers.includes(buttonNum)
+      ? 'green'
+      : revealedButtons.includes(buttonNum)
+      ? answers.includes(buttonNum)
+        ? 'green'
+        : 'red'
       : 'hidden';
   };
 
+  const gameIsWon = arraysAreEqual(answers.sort(), revealedButtons.sort());
+
   return (
-    <div className="playArea">
-      {range(0, props.colorList.length - 1).map((number) => (
-        <Space
-          key={number}
-          number={number}
-          color={buttonStatus(number)}
-          onClick={onButtonClick}
-        />
-      ))}
+    <div>
+      <div className="playArea">
+        {range(0, props.numberOfSpaces - 1).map((number) => (
+          <Space
+            key={number}
+            number={number}
+            color={buttonStatus(number)}
+            onClick={onButtonClick}
+          />
+        ))}
+      </div>
+      <div className="messageArea">
+        <h1>{gameIsWon ? 'You win!' : ''}</h1>
+      </div>
     </div>
   );
 };
