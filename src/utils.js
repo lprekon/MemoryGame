@@ -16,5 +16,6 @@ export function arraysAreEqual(array1, array2) {
 }
 
 export function generateAnswers(numSpaces) {
+  console.log('generating answers');
   return [1, 3, 5, 7];
 }
