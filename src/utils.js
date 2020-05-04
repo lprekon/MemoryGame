@@ -26,5 +26,5 @@ export function generateAnswers(numSpaces) {
     answers = answers.concat(candidateList[cIndex]);
     candidateList = candidateList.filter((val, index) => index !== cIndex);
   }
-  return [1, 3, 5, 7];
+  return answers;
 }
