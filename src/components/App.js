@@ -4,10 +4,10 @@ import { generateAnswers } from '../utils';
 
 export const numSpaces = 16;
 
-export default function App() {
+export default function App({ initialData }) {
   const [gameId, setGameId] = useState(1);
   console.log('game id', gameId);
-  const ans = gameId == 1 ? [1, 3, 5, 7] : generateAnswers(numSpaces);
+  const ans = gameId == 1 ? initialData : generateAnswers(numSpaces);
   console.log('answers', ans);
   return (
     <div className="playArea">

@@ -16,9 +16,7 @@ export function arraysAreEqual(array1, array2) {
 }
 
 export function generateAnswers(numSpaces) {
-  console.log('generating answers');
   const numAnswers = Math.floor(Math.random() * numSpaces);
-  console.log('Should x answers', numAnswers);
   var candidateList = range(0, numSpaces - 1);
   var answers = [];
   for (var i = 0; i < numAnswers; i++) {

@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
-import App from 'components/App';
+import App, { numSpaces } from 'components/App';
+import { generateAnswers } from 'utils.js';
 
 export async function serverRenderer() {
-  const initialData = {
-    appName: 'Reactful',
-  };
+  const initialData = generateAnswers(numSpaces);
 
   const pageData = {
-    title: `Hello ${initialData.appName}`,
+    title: `Hello ${initialData}`,
   };
 
   return Promise.resolve({
