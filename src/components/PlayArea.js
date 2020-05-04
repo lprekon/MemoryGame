@@ -5,7 +5,7 @@ import Space from './Space';
 export const PlayArea = (props) => {
   const [revealedButtons, setRevealedButtons] = useState([]);
   const [displayMode, setDisplayMode] = useState(true);
-  const [answers, setAnswers] = useState(props.answers);
+  //   const [props.answers, setprops.answers] = useState(props.props.answers);
 
   useEffect(() => {
     const timeId = setTimeout(() => {
@@ -27,16 +27,19 @@ export const PlayArea = (props) => {
   };
 
   const buttonStatus = (buttonNum) => {
-    return displayMode && answers.includes(buttonNum)
+    return displayMode && props.answers.includes(buttonNum)
       ? 'green'
       : revealedButtons.includes(buttonNum)
-      ? answers.includes(buttonNum)
+      ? props.answers.includes(buttonNum)
         ? 'green'
         : 'red'
       : 'hidden';
   };
 
-  const gameIsWon = arraysAreEqual(answers.sort(), revealedButtons.sort());
+  const gameIsWon = arraysAreEqual(
+    props.answers.sort(),
+    revealedButtons.sort()
+  );
 
   return (
     <div>
