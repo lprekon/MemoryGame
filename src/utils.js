@@ -16,20 +16,15 @@ export function arraysAreEqual(array1, array2) {
 }
 
 export function generateAnswers(numSpaces) {
-  let numGreens = 0;
-  while (numGreens == 0) {
-    numGreens = Math.floor(Math.random() * numSpaces);
+  console.log('generating answers');
+  const numAnswers = Math.floor(Math.random() * numSpaces);
+  console.log('Should x answers', numAnswers);
+  var candidateList = range(0, numSpaces - 1);
+  var answers = [];
+  for (var i = 0; i < numAnswers; i++) {
+    const cIndex = Math.floor(Math.random() * candidateList.length);
+    answers = answers.concat(candidateList[cIndex]);
+    candidateList = candidateList.filter((val, index) => index !== cIndex);
   }
-  let answers = [];
-  let i = 0;
-  while (i < numGreens) {
-    const candidate = Math.floor(Math.random() * numSpaces);
-    if (!answers.includes(candidate)) {
-      const newAnswers = answers.concat(candidate);
-      answers = newAnswers;
-      i = i + 1;
-    }
-  }
-  console.log('final answers', answers);
-  return answers.sort();
+  return [1, 3, 5, 7];
 }
