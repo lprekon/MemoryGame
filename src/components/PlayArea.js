@@ -2,12 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { range, arraysAreEqual } from '../utils';
 import Space from './Space';
 
-const testAnswers = [1, 3, 5, 7];
-
 export const PlayArea = (props) => {
   const [revealedButtons, setRevealedButtons] = useState([]);
   const [displayMode, setDisplayMode] = useState(true);
-  const [answers, setAnswers] = useState(testAnswers);
+  const [answers, setAnswers] = useState(props.answers);
 
   useEffect(() => {
     const timeId = setTimeout(() => {
