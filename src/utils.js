@@ -17,5 +17,14 @@ export function arraysAreEqual(array1, array2) {
 
 export function generateAnswers(numSpaces) {
   console.log('generating answers');
-  return [1, 3, 5, 7];
+  const numAnswers = Math.floor(Math.random() * numSpaces);
+  console.log('Should x answers', numAnswers);
+  var candidateList = range(0, numSpaces - 1);
+  var answers = [];
+  for (var i = 0; i < numAnswers; i++) {
+    const cIndex = Math.floor(Math.random() * candidateList.length);
+    answers = answers.concat(candidateList[cIndex]);
+    candidateList = candidateList.filter((val, index) => index !== cIndex);
+  }
+  return answers;
 }
