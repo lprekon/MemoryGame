@@ -14,3 +14,7 @@ export function arraysAreEqual(array1, array2) {
     array1.every((value, index) => value == array2[index])
   );
 }
+
+export function generateAnswers(numSpaces) {
+  return [1, 3, 5, 7];
+}
